@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_cocktail_app/pages/home_page/home_page.dart';
 
 void main() {
   runApp(const RandomCocktailApp());
@@ -12,9 +13,10 @@ class RandomCocktailApp extends StatelessWidget {
     return MaterialApp(
       title: 'Random Cocktail',
       theme: ThemeData(
+        brightness: Brightness.dark,
         primarySwatch: Colors.pink,
       ),
-      home: const Scaffold(),
+      home: HomePage(),
     );
   }
 }
