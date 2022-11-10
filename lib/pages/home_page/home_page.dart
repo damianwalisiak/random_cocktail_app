@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       //Random Button
@@ -156,10 +156,10 @@ class _HomePageState extends State<HomePage> {
                       //Search button
                       Listener(
                         onPointerDown: (_) => setState(() {
-                          isPressed = true;
+                          isPressedSearch = true;
                         }),
                         onPointerUp: (_) => setState(() {
-                          isPressed = false;
+                          isPressedSearch = false;
                         }),
                         child: Container(
                           decoration: BoxDecoration(
@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                                 decoration: TextDecoration.none,
                                 shadows: [
                                   for (double i = 1;
-                                      i < (isPressed ? 8 : 4);
+                                      i < (isPressedSearch ? 8 : 4);
                                       i++)
                                     Shadow(
                                       color: shadowColor,
