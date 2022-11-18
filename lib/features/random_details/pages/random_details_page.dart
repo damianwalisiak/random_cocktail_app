@@ -134,90 +134,94 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                widget.cocktailModel.name,
-                                                style: TextStyle(
-                                                  color: kBorderColor,
-                                                  fontFamily:
-                                                      'NotoSans-Regular',
-                                                  fontSize: 34,
-                                                  fontWeight: FontWeight.w600,
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  shadows: [
-                                                    Shadow(
-                                                      color: shadowColor,
-                                                      blurRadius: 5,
-                                                    ),
-                                                    Shadow(
-                                                      color: shadowColor,
-                                                      blurRadius: 10,
-                                                    ),
-                                                    Shadow(
-                                                      color: shadowColor,
-                                                      blurRadius: 30,
-                                                    ),
-                                                  ],
+                                          Flexible(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  widget.cocktailModel.name,
+                                                  style: TextStyle(
+                                                    color: kBorderColor,
+                                                    fontFamily:
+                                                        'NotoSans-Regular',
+                                                    fontSize: 34,
+                                                    fontWeight: FontWeight.w600,
+                                                    decoration:
+                                                        TextDecoration.none,
+                                                    shadows: [
+                                                      Shadow(
+                                                        color: shadowColor,
+                                                        blurRadius: 5,
+                                                      ),
+                                                      Shadow(
+                                                        color: shadowColor,
+                                                        blurRadius: 10,
+                                                      ),
+                                                      Shadow(
+                                                        color: shadowColor,
+                                                        blurRadius: 30,
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        vertical: 4),
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      widget.cocktailModel
-                                                          .category,
-                                                      style: TextStyle(
-                                                        color: kBorderColor
-                                                            .withOpacity(0.7),
-                                                        fontFamily:
-                                                            'NotoSans-Regular',
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        decoration:
-                                                            TextDecoration.none,
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(vertical: 4),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        widget.cocktailModel
+                                                            .category,
+                                                        style: TextStyle(
+                                                          color: kBorderColor
+                                                              .withOpacity(0.7),
+                                                          fontFamily:
+                                                              'NotoSans-Regular',
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      ' • ',
-                                                      style: TextStyle(
-                                                        color: kBorderColor
-                                                            .withOpacity(0.7),
-                                                        fontFamily:
-                                                            'NotoSans-Regular',
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        decoration:
-                                                            TextDecoration.none,
+                                                      Text(
+                                                        ' • ',
+                                                        style: TextStyle(
+                                                          color: kBorderColor
+                                                              .withOpacity(0.7),
+                                                          fontFamily:
+                                                              'NotoSans-Regular',
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      widget.cocktailModel
-                                                          .alcoholic,
-                                                      style: TextStyle(
-                                                        color: kBorderColor
-                                                            .withOpacity(0.7),
-                                                        fontFamily:
-                                                            'NotoSans-Regular',
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        decoration:
-                                                            TextDecoration.none,
+                                                      Text(
+                                                        widget.cocktailModel
+                                                            .alcoholic,
+                                                        style: TextStyle(
+                                                          color: kBorderColor
+                                                              .withOpacity(0.7),
+                                                          fontFamily:
+                                                              'NotoSans-Regular',
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none,
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                           Padding(
                                             padding:
