@@ -2,17 +2,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 import 'package:random_cocktail_app/widgets/ingredient_widget.dart';
 import 'package:random_cocktail_app/widgets/instruction_widget.dart';
 
-class DetailsPage extends StatefulWidget {
-  const DetailsPage({super.key});
-
+class SearchDetailsPage extends StatefulWidget {
   @override
-  State<DetailsPage> createState() => _DetailsPageState();
+  State<SearchDetailsPage> createState() => _SearchDetailsPageState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class _SearchDetailsPageState extends State<SearchDetailsPage> {
   bool isPressed = false;
   @override
   Widget build(BuildContext context) {
@@ -38,9 +37,11 @@ class _DetailsPageState extends State<DetailsPage> {
         leading: const BackButton(),
         actions: [
           IconButton(
+            //TODO implement search cocktails
             onPressed: () {},
+
             icon: const Icon(
-              Icons.replay_outlined,
+              Icons.search,
             ),
           ),
         ],
@@ -75,6 +76,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         )),
                     child: Image(
                       image: AssetImage('images/cocktail.jpg'),
+                      // image: NetworkImage(widget.pictureUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -105,6 +107,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                     children: [
                                       Text(
                                         'Gin & Tonic',
+                                        // widget.name,
                                         style: TextStyle(
                                           color: kBorderColor,
                                           fontFamily: 'NotoSans-Regular',
@@ -130,16 +133,44 @@ class _DetailsPageState extends State<DetailsPage> {
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 4),
-                                        child: Text(
-                                          'category • alcoholic',
-                                          style: TextStyle(
-                                            color:
-                                                kBorderColor.withOpacity(0.7),
-                                            fontFamily: 'NotoSans-Regular',
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600,
-                                            decoration: TextDecoration.none,
-                                          ),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'category',
+                                              // widget.category,
+                                              style: TextStyle(
+                                                color: kBorderColor
+                                                    .withOpacity(0.7),
+                                                fontFamily: 'NotoSans-Regular',
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                                decoration: TextDecoration.none,
+                                              ),
+                                            ),
+                                            Text(
+                                              ' • ',
+                                              style: TextStyle(
+                                                color: kBorderColor
+                                                    .withOpacity(0.7),
+                                                fontFamily: 'NotoSans-Regular',
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                                decoration: TextDecoration.none,
+                                              ),
+                                            ),
+                                            Text(
+                                              'alcoholic',
+                                              // widget.alcoholic,
+                                              style: TextStyle(
+                                                color: kBorderColor
+                                                    .withOpacity(0.7),
+                                                fontFamily: 'NotoSans-Regular',
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                                decoration: TextDecoration.none,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
@@ -158,7 +189,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                                   kBorderColor.withOpacity(0.7),
                                             ),
                                             Text(
-                                              'Glass type',
+                                              'glass type',
+                                              // widget.glassType,
                                               style: TextStyle(
                                                 color: kBorderColor
                                                     .withOpacity(0.7),
@@ -186,10 +218,14 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
             //Ingredient box
             const IngredientWidget(
+              // ingredientList: widget.ingredients,
               ingredientList: [],
             ),
             //Instrucction Box
-            const InstructionWidget(instructions: 'instructions')
+            const InstructionWidget(
+              instructions: 'widget.instructions',
+              // instructions: widget.instructions,
+            )
           ],
         ),
       ),

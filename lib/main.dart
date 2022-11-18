@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_cocktail_app/pages/details_page/details_page.dart';
-import 'package:random_cocktail_app/pages/home_page/home_page.dart';
+import 'package:random_cocktail_app/features/home/pages/home_page.dart';
 
 void main() {
   runApp(const RandomCocktailApp());
@@ -17,7 +16,7 @@ class RandomCocktailApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.pink,
       ),
-      home: DetailsPage(),
+      home: HomePage(),
     );
   }
 }

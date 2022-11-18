@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:random_cocktail_app/constants.dart';
-import 'package:random_cocktail_app/services/ingredient.dart';
+import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 
 class IngredientWidget extends StatelessWidget {
   const IngredientWidget({super.key, required this.ingredientList});
 
-  final List<Ingredient> ingredientList;
+  final List<IngredientModel> ingredientList;
 
   Widget createIngredientTable() {
     List<TableRow> rows = [];

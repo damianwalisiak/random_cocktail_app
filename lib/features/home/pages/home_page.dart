@@ -1,11 +1,15 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_text/circular_text.dart';
 import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
+import 'package:random_cocktail_app/features/random_details/pages/random_details_page.dart';
+import 'package:random_cocktail_app/features/search_details/pages/search_details_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -14,6 +18,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isPressed = false;
   bool isPressedSearch = false;
+  String? cocktailName;
+  final _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +49,9 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(
                         height: 70,
                       ),
-                      //logo image/TODO rive animation
+                      //logo image
+
+                      //TODO rive animation
                       const Image(
                         image: AssetImage('images/drink.png'),
                         width: 200,
@@ -98,7 +106,22 @@ class _HomePageState extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => RandomDetailsPage(
+                                    cocktailModel: CocktailModel(
+                                      name: 'name',
+                                      category: 'category',
+                                      alcoholic: 'alcoholic',
+                                      glassType: 'glassType',
+                                      pictureUrl: 'pictureUrl',
+                                      instructions: 'instructions',
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
                             child: Text(
                               ' Find out! ',
                               style: TextStyle(
@@ -141,7 +164,10 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.all(20),
                         child: TextField(
-                          onChanged: (value) {},
+                          onChanged: (value) {
+                            cocktailName = value;
+                          },
+                          controller: _controller,
                           decoration: InputDecoration(
                             hintText: 'e.g. Zombie',
                             border: OutlineInputBorder(
@@ -176,7 +202,18 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              if (cocktailName == null) return;
+                              cocktailName!.toLowerCase().replaceAll(' ', '_');
+                              var _controler = await cocktailName;
+                              // context.read<HomeCubit>().getCocktailModel(
+                              //     cocktailName: _controler);
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => SearchDetailsPage(),
+                                ),
+                              );
+                            },
                             style: TextButton.styleFrom(
                               side: const BorderSide(
                                   color: kBorderColor, width: 4),
