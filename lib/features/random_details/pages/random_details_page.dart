@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
+import 'package:random_cocktail_app/app/data/remote_data_sources/random_remote_data_source.dart';
 import 'package:random_cocktail_app/constants.dart';
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
@@ -31,7 +32,7 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
     Color shadowColor = kShadowColor;
     return BlocProvider(
       create: (context) => RandomDetailsCubit(
-        RandomCocktailRepository(),
+        RandomCocktailRepository(RandomRemoteDataSource()),
       ),
       child: BlocListener<RandomDetailsCubit, RandomDetailsState>(
         listener: (context, state) {
@@ -99,15 +100,16 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                         fit: StackFit.passthrough,
                         children: [
                           //image cocktail
-                          const ClipRRect(
-                            borderRadius: BorderRadius.only(
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(40),
                                 bottomRight: Radius.circular(
                                   40,
                                 )),
                             child: Image(
                               image: AssetImage('images/cocktail.jpg'),
-                              // image: NetworkImage(widget.pictureUrl),
+                              // image:
+                              //     NetworkImage(widget.cocktailModel.pictureUrl),
                               fit: BoxFit.cover,
                             ),
                           ),

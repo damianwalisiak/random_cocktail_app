@@ -49,5 +49,12 @@ class CocktailModel {
 //                                 },
 //                               );
 // //
-
+  CocktailModel.fromJson(Map<String, dynamic> json)
+      : name = json['drinks']['strDrink'],
+        category = json['drinks']['strCategory'],
+        alcoholic = json['drinks']['strAlcoholic'],
+        glassType = json['drinks']['strGlass'],
+        pictureUrl = json['drinks']['strDrinkThumb'],
+        instructions = json['drinks']['strInstructions'];
+  //  ingredients = ingredientList;
 }

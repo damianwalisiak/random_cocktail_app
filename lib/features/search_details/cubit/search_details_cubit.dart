@@ -31,7 +31,8 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
         glassType: glassType,
         pictureUrl: pictureUrl,
         instructions: instructions,
-      )) as List<CocktailModel>;
+        cocktailName: '',
+      ));
       emit(
         SearchDetailsState(
           model: cocktailModel,

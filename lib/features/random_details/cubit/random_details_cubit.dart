@@ -31,7 +31,7 @@ class RandomDetailsCubit extends Cubit<RandomDetailsState> {
         glassType: glassType,
         pictureUrl: pictureUrl,
         instructions: instructions,
-      )) as List<CocktailModel>;
+      ));
       emit(
         RandomDetailsState(
           model: cocktailModel,
