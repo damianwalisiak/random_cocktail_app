@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
+import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 import 'package:random_cocktail_app/domain/repositories/random_cocktail_repository.dart';
 
 part 'random_details_state.dart';
@@ -20,6 +21,7 @@ class RandomDetailsCubit extends Cubit<RandomDetailsState> {
     required String glassType,
     required String pictureUrl,
     required String instructions,
+    required List<IngredientModel> ingredients,
   }) async {
     emit(const RandomDetailsState(status: Status.loading));
     try {
@@ -31,6 +33,7 @@ class RandomDetailsCubit extends Cubit<RandomDetailsState> {
         glassType: glassType,
         pictureUrl: pictureUrl,
         instructions: instructions,
+        ingredients: ingredients,
       ));
       emit(
         RandomDetailsState(

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
+import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 import 'package:random_cocktail_app/domain/repositories/search_cocktail_repository.dart';
 
 part 'search_details_state.dart';
@@ -13,13 +14,14 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
   final SearchCocktailRepository _searchRepository;
 
   Future<void> getCocktailModel({
-    // required String cocktailName,
+    required String cocktailName,
     required String name,
     required String category,
     required String alcoholic,
     required String glassType,
     required String pictureUrl,
     required String instructions,
+    required List<IngredientModel> ingredients,
   }) async {
     emit(const SearchDetailsState(status: Status.loading));
     try {
@@ -31,7 +33,8 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
         glassType: glassType,
         pictureUrl: pictureUrl,
         instructions: instructions,
-        cocktailName: '',
+        cocktailName: cocktailName,
+        ingredients: ingredients,
       ));
       emit(
         SearchDetailsState(

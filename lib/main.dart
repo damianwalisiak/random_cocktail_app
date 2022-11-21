@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 import 'package:random_cocktail_app/features/home/pages/home_page.dart';
 
 void main() {
@@ -16,7 +17,18 @@ class RandomCocktailApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.pink,
       ),
-      home: HomePage(),
+      home: HomePage(
+        cocktailModel: CocktailModel(
+          name: 'cocktailModel.name',
+          category: 'category',
+          alcoholic: 'alcoholic',
+          glassType: 'glassType',
+          pictureUrl: 'pictureUrl',
+          instructions: 'instructions',
+          // cocktailName: cocktailName,
+          ingredients: [],
+        ),
+      ),
     );
   }
 }

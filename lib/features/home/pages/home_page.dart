@@ -10,11 +10,16 @@ import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 import 'package:random_cocktail_app/domain/repositories/random_cocktail_repository.dart';
 import 'package:random_cocktail_app/features/home/cubit/home_cubit.dart';
 import 'package:random_cocktail_app/features/random_details/pages/random_details_page.dart';
+import 'package:random_cocktail_app/features/search_details/cubit/search_details_cubit.dart';
 import 'package:random_cocktail_app/features/search_details/pages/search_details_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  HomePage({
+    Key? key,
+    required this.cocktailModel,
+  }) : super(key: key);
 
+  final CocktailModel cocktailModel;
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -132,12 +137,19 @@ class _HomePageState extends State<HomePage> {
                                         MaterialPageRoute(
                                           builder: (_) => RandomDetailsPage(
                                             cocktailModel: CocktailModel(
-                                              name: 'name',
-                                              category: 'category',
-                                              alcoholic: 'alcooholic',
-                                              glassType: 'glassType',
-                                              pictureUrl: 'pictureUrl',
-                                              instructions: 'instructions',
+                                              name: widget.cocktailModel.name,
+                                              category:
+                                                  widget.cocktailModel.category,
+                                              alcoholic: widget
+                                                  .cocktailModel.alcoholic,
+                                              glassType: widget
+                                                  .cocktailModel.glassType,
+                                              pictureUrl: widget
+                                                  .cocktailModel.pictureUrl,
+                                              instructions: widget
+                                                  .cocktailModel.instructions,
+                                              ingredients: widget
+                                                  .cocktailModel.ingredients,
                                             ),
                                           ),
                                         ),
@@ -232,8 +244,17 @@ class _HomePageState extends State<HomePage> {
                                           .toLowerCase()
                                           .replaceAll(' ', '_');
                                       var _controler = await cocktailName;
-                                      // context.read<HomeCubit>().getCocktailModel(
-                                      //     cocktailName: _controler);
+                                      context
+                                          .read<SearchDetailsCubit>()
+                                          .getCocktailModel(
+                                              cocktailName: _controler!,
+                                              alcoholic: '',
+                                              category: '',
+                                              glassType: '',
+                                              ingredients: [],
+                                              instructions: '',
+                                              name: '',
+                                              pictureUrl: '');
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (_) => SearchDetailsPage(),
