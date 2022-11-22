@@ -247,17 +247,40 @@ class _HomePageState extends State<HomePage> {
                                       context
                                           .read<SearchDetailsCubit>()
                                           .getCocktailModel(
-                                              cocktailName: _controler!,
-                                              alcoholic: '',
-                                              category: '',
-                                              glassType: '',
-                                              ingredients: [],
-                                              instructions: '',
-                                              name: '',
-                                              pictureUrl: '');
+                                            cocktailName: _controler!,
+                                            name: widget.cocktailModel.name,
+                                            category:
+                                                widget.cocktailModel.category,
+                                            alcoholic:
+                                                widget.cocktailModel.alcoholic,
+                                            glassType:
+                                                widget.cocktailModel.glassType,
+                                            pictureUrl:
+                                                widget.cocktailModel.pictureUrl,
+                                            instructions: widget
+                                                .cocktailModel.instructions,
+                                            ingredients: widget
+                                                .cocktailModel.ingredients,
+                                          );
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
-                                          builder: (_) => SearchDetailsPage(),
+                                          builder: (_) => SearchDetailsPage(
+                                            cocktailModel: CocktailModel(
+                                              name: widget.cocktailModel.name,
+                                              category:
+                                                  widget.cocktailModel.category,
+                                              alcoholic: widget
+                                                  .cocktailModel.alcoholic,
+                                              glassType: widget
+                                                  .cocktailModel.glassType,
+                                              pictureUrl: widget
+                                                  .cocktailModel.pictureUrl,
+                                              instructions: widget
+                                                  .cocktailModel.instructions,
+                                              ingredients: widget
+                                                  .cocktailModel.ingredients,
+                                            ),
+                                          ),
                                         ),
                                       );
                                     },

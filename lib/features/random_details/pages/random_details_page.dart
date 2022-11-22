@@ -269,11 +269,10 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                       ),
                     ),
                     //Ingredient box
-                    const IngredientWidget(
-                      // ingredientList: widget.ingredients,
-                      ingredientList: [],
+                    IngredientWidget(
+                      ingredientList: widget.cocktailModel.ingredients,
                     ),
-                    //Instrucction Box
+                    //Instruction Box
                     InstructionWidget(
                       instructions: widget.cocktailModel.instructions,
                     )
