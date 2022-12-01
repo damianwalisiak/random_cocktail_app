@@ -15,17 +15,7 @@ void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(
-      RandomCocktailApp(
-        cocktailModel: CocktailModel(
-          name: 'name',
-          category: 'category',
-          alcoholic: 'alcoholic',
-          glassType: 'glassType',
-          pictureUrl: 'pictureUrl',
-          instructions: 'instructions',
-          ingredients: [],
-        ),
-      ),
+      RandomCocktailApp(),
     );
 
     // Verify that our counter starts at 0.

@@ -9,32 +9,20 @@ part 'random_details_state.dart';
 
 class RandomDetailsCubit extends Cubit<RandomDetailsState> {
   RandomDetailsCubit(this._randomRepository)
-      : super(const RandomDetailsState());
+      : super(const RandomDetailsState(model: null));
 
   final RandomCocktailRepository _randomRepository;
 
-  Future<void> getCocktailModel({
-    // required String cocktailName,
-    required String name,
-    required String category,
-    required String alcoholic,
-    required String glassType,
-    required String pictureUrl,
-    required String instructions,
-    required List<IngredientModel> ingredients,
-  }) async {
-    emit(const RandomDetailsState(status: Status.loading));
+  Future<void> getCocktailModel() async {
+    emit(const RandomDetailsState(
+      model: null,
+      status: Status.loading,
+    ));
+
     try {
-      final List<CocktailModel> cocktailModel =
-          (await _randomRepository.getCocktailModel(
-        name: name,
-        category: category,
-        alcoholic: alcoholic,
-        glassType: glassType,
-        pictureUrl: pictureUrl,
-        instructions: instructions,
-        ingredients: ingredients,
-      ));
+      final CocktailModel cocktailModel =
+          await _randomRepository.getRandomCocktailModel();
+
       emit(
         RandomDetailsState(
           model: cocktailModel,
@@ -44,6 +32,7 @@ class RandomDetailsCubit extends Cubit<RandomDetailsState> {
     } catch (error) {
       emit(
         RandomDetailsState(
+          model: null,
           status: Status.error,
           errorMessage: error.toString(),
         ),

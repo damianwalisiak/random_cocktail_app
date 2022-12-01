@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
 import 'package:random_cocktail_app/app/data/remote_data_sources/search_remote_data_source.dart';
 import 'package:random_cocktail_app/constants.dart';
-import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
-import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 import 'package:random_cocktail_app/domain/repositories/search_cocktail_repository.dart';
 import 'package:random_cocktail_app/features/search_details/cubit/search_details_cubit.dart';
 import 'package:random_cocktail_app/widgets/ingredient_widget.dart';
@@ -15,10 +13,10 @@ import 'package:random_cocktail_app/widgets/instruction_widget.dart';
 class SearchDetailsPage extends StatefulWidget {
   const SearchDetailsPage({
     Key? key,
-    required this.cocktailModel,
+    required this.cocktailName,
   }) : super(key: key);
 
-  final CocktailModel cocktailModel;
+  final String cocktailName;
 
   @override
   State<SearchDetailsPage> createState() => _SearchDetailsPageState();
@@ -33,7 +31,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
     return BlocProvider(
       create: (context) => SearchDetailsCubit(
         SearchCocktailRepository(SearchRemoteDataSource()),
-      ),
+      )..getCocktailModel(cocktailName: widget.cocktailName),
       child: BlocListener<SearchDetailsCubit, SearchDetailsState>(
         listener: (context, state) {
           if (state.status == Status.error) {
@@ -48,7 +46,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
         },
         child: BlocBuilder<SearchDetailsCubit, SearchDetailsState>(
           builder: (context, state) {
-            final cocktailModel = state.model;
+            final cocktailModel = state.model[0];
             return Scaffold(
               //AppBar look
               extendBodyBehindAppBar: true,
@@ -101,7 +99,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                         fit: StackFit.passthrough,
                         children: [
                           //image cocktail
-                          const ClipRRect(
+                          ClipRRect(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(40),
                                 bottomRight: Radius.circular(
@@ -109,7 +107,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                                 )),
                             child: Image(
                               image: AssetImage('images/cocktail.jpg'),
-                              // image: NetworkImage(widget.cocktailModel.pictureUrl),
+                              // image: NetworkImage(cocktailModel.pictureUrl),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -139,7 +137,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                widget.cocktailModel.name,
+                                                cocktailModel.name,
                                                 style: TextStyle(
                                                   color: kBorderColor,
                                                   fontFamily:
@@ -172,37 +170,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                                                 child: Row(
                                                   children: [
                                                     Text(
-                                                      widget.cocktailModel
-                                                          .category,
-                                                      style: TextStyle(
-                                                        color: kBorderColor
-                                                            .withOpacity(0.7),
-                                                        fontFamily:
-                                                            'NotoSans-Regular',
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        decoration:
-                                                            TextDecoration.none,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      ' • ',
-                                                      style: TextStyle(
-                                                        color: kBorderColor
-                                                            .withOpacity(0.7),
-                                                        fontFamily:
-                                                            'NotoSans-Regular',
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        decoration:
-                                                            TextDecoration.none,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      widget.cocktailModel
-                                                          .alcoholic,
+                                                      cocktailModel.category,
                                                       style: TextStyle(
                                                         color: kBorderColor
                                                             .withOpacity(0.7),
@@ -235,8 +203,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                                                           .withOpacity(0.7),
                                                     ),
                                                     Text(
-                                                      widget.cocktailModel
-                                                          .glassType,
+                                                      cocktailModel.glassType,
                                                       style: TextStyle(
                                                         color: kBorderColor
                                                             .withOpacity(0.7),
@@ -267,11 +234,11 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                     ),
                     //Ingredient box
                     IngredientWidget(
-                      ingredientList: widget.cocktailModel.ingredients,
+                      ingredientsList: cocktailModel.ingredientsList,
                     ),
                     //Instrucction Box
                     InstructionWidget(
-                      instructions: widget.cocktailModel.instructions,
+                      instructions: cocktailModel.instructions,
                     )
                   ],
                 ),

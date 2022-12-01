@@ -3,20 +3,20 @@ import 'package:random_cocktail_app/constants.dart';
 import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 
 class IngredientWidget extends StatelessWidget {
-  const IngredientWidget({super.key, required this.ingredientList});
+  const IngredientWidget({super.key, required this.ingredientsList});
 
-  final List<IngredientModel> ingredientList;
+  final List<IngredientModel> ingredientsList;
 
   Widget createIngredientTable() {
     List<TableRow> rows = [];
 
-    for (int i = 0; i < ingredientList.length; i++) {
+    for (int i = 0; i < ingredientsList.length; i++) {
       rows.add(
         TableRow(
           children: [
             Center(
               child: Text(
-                ingredientList[i].name,
+                ingredientsList[i].name,
                 style: TextStyle(
                   color: kNormalTextColor.withOpacity(0.8),
                   fontSize: 18,
@@ -28,7 +28,7 @@ class IngredientWidget extends StatelessWidget {
             ),
             Center(
               child: Text(
-                ingredientList[i].mesure,
+                ingredientsList[i].mesure,
                 style: TextStyle(
                   color: kNormalTextColor.withOpacity(0.8),
                   fontSize: 18,

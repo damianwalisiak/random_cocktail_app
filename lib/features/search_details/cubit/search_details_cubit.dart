@@ -15,27 +15,13 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
 
   Future<void> getCocktailModel({
     required String cocktailName,
-    required String name,
-    required String category,
-    required String alcoholic,
-    required String glassType,
-    required String pictureUrl,
-    required String instructions,
-    required List<IngredientModel> ingredients,
   }) async {
     emit(const SearchDetailsState(status: Status.loading));
     try {
       final List<CocktailModel> cocktailModel =
-          (await _searchRepository.getCocktailModel(
-        name: name,
-        category: category,
-        alcoholic: alcoholic,
-        glassType: glassType,
-        pictureUrl: pictureUrl,
-        instructions: instructions,
+          await _searchRepository.getCocktailModel(
         cocktailName: cocktailName,
-        ingredients: ingredients,
-      ));
+      );
       emit(
         SearchDetailsState(
           model: cocktailModel,

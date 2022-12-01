@@ -1,15 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 
 class RandomRemoteDataSource {
-  Future<List<Map<String, dynamic>>?> getRandomCocktail() async {
-    final response = await Dio().get<List<dynamic>>(
+  Future<Map<String, dynamic>?> fetchDataForRandomCocktail() async {
+    final response = await Dio().get<Map<String, dynamic>>(
         'https://www.thecocktaildb.com/api/json/v1/1/random.php');
 
-    final listDynamic = response.data;
-    if (listDynamic == null) {
+    final data = response.data;
+    if (data == null) {
       return null;
     }
-    return listDynamic.map((e) => e as Map<String, dynamic>).toList();
+    return data['drinks'][0];
   }
 }
