@@ -9,16 +9,19 @@ part 'search_details_state.dart';
 
 class SearchDetailsCubit extends Cubit<SearchDetailsState> {
   SearchDetailsCubit(this._searchRepository)
-      : super(const SearchDetailsState());
+      : super(const SearchDetailsState(model: null));
 
   final SearchCocktailRepository _searchRepository;
 
   Future<void> getCocktailModel({
     required String cocktailName,
   }) async {
-    emit(const SearchDetailsState(status: Status.loading));
+    emit(const SearchDetailsState(
+      model: null,
+      status: Status.loading,
+    ));
     try {
-      final List<CocktailModel> cocktailModel =
+      final CocktailModel cocktailModel =
           await _searchRepository.getCocktailModel(
         cocktailName: cocktailName,
       );
@@ -31,6 +34,7 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
     } catch (error) {
       emit(
         SearchDetailsState(
+          model: null,
           status: Status.error,
           errorMessage: error.toString(),
         ),

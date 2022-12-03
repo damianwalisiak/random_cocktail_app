@@ -6,15 +6,15 @@ class SearchCocktailRepository {
 
   final SearchRemoteDataSource _searchRemoteDataSource;
 
-  Future<List<CocktailModel>> getCocktailModel({
+  Future<CocktailModel> getCocktailModel({
     required String cocktailName,
   }) async {
     final json = await _searchRemoteDataSource.getSearchCocktail(
       cocktailName: cocktailName,
     );
     if (json == null) {
-      return [];
+      throw Exception('');
     }
-    return json.map((item) => CocktailModel.fromJson(item)).toList();
+    return CocktailModel.fromJson(json);
   }
 }
