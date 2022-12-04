@@ -14,29 +14,37 @@ class IngredientWidget extends StatelessWidget {
       rows.add(
         TableRow(
           children: [
-            Center(
-              child: Text(
-                ingredientsList[i].name,
-                style: TextStyle(
-                  color: kNormalTextColor.withOpacity(0.8),
-                  fontSize: 18,
-                  fontFamily: 'NotoSans-Regular',
-                  fontWeight: FontWeight.w600,
-                  decoration: TextDecoration.none,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  ingredientsList[i].name,
+                  style: TextStyle(
+                    color: kNormalTextColor.withOpacity(0.8),
+                    fontSize: 18,
+                    fontFamily: 'NotoSans-Regular',
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.none,
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-              ),
+              ],
             ),
-            Center(
-              child: Text(
-                ingredientsList[i].mesure,
-                style: TextStyle(
-                  color: kNormalTextColor.withOpacity(0.8),
-                  fontSize: 18,
-                  fontFamily: 'NotoSans-Regular',
-                  fontWeight: FontWeight.w600,
-                  decoration: TextDecoration.none,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  ingredientsList[i].mesure,
+                  style: TextStyle(
+                    color: kNormalTextColor.withOpacity(0.8),
+                    fontSize: 18,
+                    fontFamily: 'NotoSans-Regular',
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.none,
+                  ),
+                  textAlign: TextAlign.right,
                 ),
-              ),
+              ],
             ),
           ],
         ),
@@ -47,66 +55,63 @@ class IngredientWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      //Box look
-      child: Container(
-        padding: const EdgeInsets.only(
-          top: 20,
-          left: 40,
-          right: 40,
-          bottom: 20,
+    return Container(
+      padding: const EdgeInsets.only(
+        top: 20,
+        left: 40,
+        right: 40,
+        bottom: 20,
+      ),
+      margin: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        border: Border.all(
+          color: kBorderColor.withOpacity(0.9),
+          width: 6,
+          style: BorderStyle.solid,
         ),
-        margin: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.white10,
-          border: Border.all(
-            color: kBorderColor.withOpacity(0.9),
-            width: 6,
-            style: BorderStyle.solid,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [
+          BoxShadow(
+            color: kShadowColor,
+            blurRadius: 12,
+            blurStyle: BlurStyle.outer,
           ),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(
-              color: kShadowColor,
-              blurRadius: 12,
-              blurStyle: BlurStyle.outer,
+        ],
+      ),
+      child: Column(
+        children: [
+          //Title of box
+          const Text(
+            'Ingredients',
+            style: TextStyle(
+              color: kBorderColor,
+              fontFamily: 'NotoSans-Regular',
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              decoration: TextDecoration.none,
+              shadows: [
+                Shadow(
+                  color: kShadowColor,
+                  blurRadius: 3,
+                ),
+                Shadow(
+                  color: kShadowColor,
+                  blurRadius: 6,
+                ),
+                Shadow(
+                  color: kShadowColor,
+                  blurRadius: 9,
+                ),
+              ],
             ),
-          ],
-        ),
-        child: Column(
-          children: [
-            //Title of box
-            const Text(
-              'Ingredients',
-              style: TextStyle(
-                color: kBorderColor,
-                fontFamily: 'NotoSans-Regular',
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                decoration: TextDecoration.none,
-                shadows: [
-                  Shadow(
-                    color: kShadowColor,
-                    blurRadius: 3,
-                  ),
-                  Shadow(
-                    color: kShadowColor,
-                    blurRadius: 6,
-                  ),
-                  Shadow(
-                    color: kShadowColor,
-                    blurRadius: 9,
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            createIngredientTable(),
-          ],
-        ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          createIngredientTable(),
+        ],
       ),
     );
   }
