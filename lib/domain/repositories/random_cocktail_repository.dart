@@ -9,7 +9,7 @@ class RandomCocktailRepository {
   Future<CocktailModel> getRandomCocktailModel() async {
     final json = await _randomRemoteDataSource.fetchDataForRandomCocktail();
     if (json == null) {
-      throw Exception('');
+      throw Exception('Failed to get data');
     }
     return CocktailModel.fromJson(json);
   }

@@ -20,12 +20,12 @@ class CocktailModel {
   });
 
   CocktailModel.fromJson(Map<String, dynamic> json)
-      : name = json['strDrink'],
-        category = json['strCategory'],
-        alcoholic = json['strAlcoholic'],
-        glassType = json['strGlass'],
-        pictureUrl = json['strDrinkThumb'],
-        instructions = json['strInstructions'],
+      : name = json['strDrink'] ?? '',
+        category = json['strCategory'] ?? '',
+        alcoholic = json['strAlcoholic'] ?? '',
+        glassType = json['strGlass'] ?? '',
+        pictureUrl = json['strDrinkThumb'] ?? '',
+        instructions = json['strInstructions'] ?? '',
         ingredientsList = _getIngredients(json);
 
   static List<IngredientModel> _getIngredients(

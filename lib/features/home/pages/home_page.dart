@@ -87,9 +87,19 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.all(20),
                       child: TextField(
-                        // onChanged: (value) {input = value;},
                         controller: _controller,
+                        onChanged: (text) {
+                          setState(() {});
+                        },
                         decoration: InputDecoration(
+                          suffixIcon: _controller.text.isNotEmpty
+                              ? IconButton(
+                                  onPressed: () {
+                                    _controller.clear();
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(Icons.clear))
+                              : null,
                           hintText: 'e.g. Zombie',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),

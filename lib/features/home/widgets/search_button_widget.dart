@@ -1,7 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_cocktail_app/constants.dart';
-import 'package:random_cocktail_app/features/search_details/cubit/search_details_cubit.dart';
 import 'package:random_cocktail_app/features/search_details/pages/search_details_page.dart';
 
 class SearchButton extends StatelessWidget {
@@ -45,20 +45,15 @@ class SearchButton extends StatelessWidget {
               ),
             );
           } else {
-            (context.read<SearchDetailsCubit>().getCocktailModel(
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => SearchDetailsPage(
                   cocktailName:
                       _controller.text.toLowerCase().replaceAll(' ', '_'),
-                ));
-          }
-
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => SearchDetailsPage(
-                cocktailName:
-                    _controller.text.toLowerCase().replaceAll(' ', '_'),
+                ),
               ),
-            ),
-          );
+            );
+          }
         },
         style: TextButton.styleFrom(
           side: const BorderSide(color: kBorderColor, width: 4),

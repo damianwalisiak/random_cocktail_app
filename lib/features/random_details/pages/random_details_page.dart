@@ -45,135 +45,137 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
             );
           }
         },
-        child: BlocBuilder<RandomDetailsCubit, RandomDetailsState>(
-          builder: (context, state) {
-            switch (state.status) {
-              case Status.initial:
-                return const Center(
-                  child: Text('Initial state'),
-                );
-              case Status.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case Status.error:
-                return Center(
-                  child: Text(
-                    state.errorMessage ?? 'Unknown error',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Theme.of(context).errorColor,
+        child: Scaffold(
+          body: BlocBuilder<RandomDetailsCubit, RandomDetailsState>(
+            builder: (context, state) {
+              switch (state.status) {
+                case Status.initial:
+                  return const Center(
+                    child: Text('Initial state'),
+                  );
+                case Status.loading:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                case Status.error:
+                  return Center(
+                    child: Text(
+                      state.errorMessage ?? 'Unknown error',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Theme.of(context).errorColor,
+                      ),
                     ),
-                  ),
-                );
-              case Status.success:
-                final cocktailModel = state.model;
+                  );
+                case Status.success:
+                  final cocktailModel = state.model;
 
-                if (cocktailModel == null) {
-                  return const CircularProgressIndicator();
-                }
+                  if (cocktailModel == null) {
+                    return const CircularProgressIndicator();
+                  }
 
-                return Scaffold(
-                  //AppBar look
-                  extendBodyBehindAppBar: true,
-                  backgroundColor: Colors.transparent,
-                  appBar: AppBar(
+                  return Scaffold(
+                    //AppBar look
+                    extendBodyBehindAppBar: true,
                     backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    iconTheme: IconThemeData(
-                      size: 40,
-                      color: kBorderColor,
-                      shadows: [
-                        for (double i = 1; i < (isPressed ? 8 : 4); i++)
-                          Shadow(
-                            color: shadowColor,
-                            blurRadius: 6 * i,
-                          ),
-                      ],
-                    ),
-                    leading: Builder(builder: (BuildContext context) {
-                      return IconButton(
-                          icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                    appBar: AppBar(
+                      backgroundColor: Colors.transparent,
+                      elevation: 0,
+                      iconTheme: IconThemeData(
+                        size: 40,
+                        color: kBorderColor,
+                        shadows: [
+                          for (double i = 1; i < (isPressed ? 8 : 4); i++)
+                            Shadow(
+                              color: shadowColor,
+                              blurRadius: 6 * i,
+                            ),
+                        ],
+                      ),
+                      leading: Builder(builder: (BuildContext context) {
+                        return IconButton(
+                            icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => const HomePage(),
+                                ),
+                              );
+                            });
+                      }),
+                      actions: [
+                        IconButton(
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (_) => const HomePage(),
+                                builder: (_) => const RandomDetailsPage(),
                               ),
                             );
-                          });
-                    }),
-                    actions: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => const RandomDetailsPage(),
-                            ),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.replay_outlined,
-                        ),
-                      ),
-                    ],
-                  ),
-                  //Gradient background
-                  body: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment(0, 1),
-                        colors: <Color>[
-                          kBackgroundColor1,
-                          kBackgroundColor2,
-                        ],
-                        tileMode: TileMode.mirror,
-                      ),
-                    ),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: [
-                        SizedBox(
-                          height: 550,
-                          child: Stack(
-                            fit: StackFit.passthrough,
-                            children: [
-                              //image cocktail
-                              ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                    bottomLeft: Radius.circular(40),
-                                    bottomRight: Radius.circular(
-                                      40,
-                                    )),
-                                child: Image(
-                                  image: NetworkImage(
-                                    cocktailModel.pictureUrl,
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              //Details of cocktail
-                              DetailsCocktail(
-                                cocktailModel: cocktailModel,
-                                shadowColor: shadowColor,
-                              ),
-                            ],
+                          },
+                          icon: const Icon(
+                            Icons.replay_outlined,
                           ),
                         ),
-                        //Ingredient box
-                        IngredientWidget(
-                          ingredientsList: cocktailModel.ingredientsList,
-                        ),
-                        //Instruction Box
-                        InstructionWidget(
-                          instructions: cocktailModel.instructions,
-                        )
                       ],
                     ),
-                  ),
-                );
-            }
-          },
+                    //Gradient background
+                    body: Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment(0, 1),
+                          colors: <Color>[
+                            kBackgroundColor1,
+                            kBackgroundColor2,
+                          ],
+                          tileMode: TileMode.mirror,
+                        ),
+                      ),
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        children: [
+                          SizedBox(
+                            height: 550,
+                            child: Stack(
+                              fit: StackFit.passthrough,
+                              children: [
+                                //image cocktail
+                                ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(40),
+                                      bottomRight: Radius.circular(
+                                        40,
+                                      )),
+                                  child: Image(
+                                    image: NetworkImage(
+                                      cocktailModel.pictureUrl,
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                //Details of cocktail
+                                DetailsCocktail(
+                                  cocktailModel: cocktailModel,
+                                  shadowColor: shadowColor,
+                                ),
+                              ],
+                            ),
+                          ),
+                          //Ingredient box
+                          IngredientWidget(
+                            ingredientsList: cocktailModel.ingredientsList,
+                          ),
+                          //Instruction Box
+                          InstructionWidget(
+                            instructions: cocktailModel.instructions,
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+              }
+            },
+          ),
         ),
       ),
     );

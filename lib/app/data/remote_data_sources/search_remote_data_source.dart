@@ -13,15 +13,5 @@ class SearchRemoteDataSource {
       throw Exception(
           error.response?.data['error']['message'] ?? 'Unkown error');
     }
-    //TODO implement cocktailName and evrything with change ' " for ""
-
-    // final response = await Dio().get<List<dynamic>>(
-    //     'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$cocktailName');
-
-    // final listDynamic = response.data;
-    // if (listDynamic == null) {
-    //   return null;
-    // }
-    // return listDynamic.map((e) => e as Map<String, dynamic>).toList();
   }
 }
