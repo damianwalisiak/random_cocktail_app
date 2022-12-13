@@ -91,6 +91,8 @@ class _HomePageState extends State<HomePage> {
                         onChanged: (text) {
                           setState(() {});
                         },
+                        style:
+                            TextStyle(color: kNormalTextColor.withOpacity(0.9)),
                         decoration: InputDecoration(
                           suffixIcon: _controller.text.isNotEmpty
                               ? IconButton(

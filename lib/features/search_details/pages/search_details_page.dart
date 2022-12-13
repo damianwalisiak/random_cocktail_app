@@ -87,23 +87,26 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                       ),
                       leading: Builder(builder: (BuildContext context) {
                         return IconButton(
-                            icon: const Icon(Icons.arrow_back_ios_new_outlined),
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => const HomePage(),
-                                ),
-                              );
-                            });
+                          splashRadius: 28,
+                          splashColor: kShadowColor,
+                          icon: const Icon(
+                            Icons.arrow_back_ios_new_outlined,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        );
                       }),
                       actions: [
                         IconButton(
-                          //TODO implement search cocktails
-                          onPressed: () {},
-
+                          splashRadius: 28,
+                          splashColor: kShadowColor,
                           icon: const Icon(
                             Icons.search,
                           ),
+                          onPressed: () async {
+                            await searchDialog(context);
+                          },
                         ),
                       ],
                     ),
@@ -167,5 +170,79 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
         ),
       ),
     );
+  }
+
+  Future<void> searchDialog(BuildContext context) {
+    TextEditingController controller = TextEditingController();
+
+    return showDialog(
+        context: context,
+        builder: (buildContext) {
+          return BlocProvider(
+            create: (context) => SearchDetailsCubit(
+              SearchCocktailRepository(SearchRemoteDataSource()),
+            ),
+            child: AlertDialog(
+              title: const Text(
+                'Cocktail name',
+                style: TextStyle(
+                  color: kShadowColor,
+                  fontSize: 22,
+                ),
+              ),
+              content: TextField(
+                controller: controller,
+                style: TextStyle(color: kNormalTextColor.withOpacity(0.9)),
+                decoration: InputDecoration(
+                  hintText: 'e.g. Vesper',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: kBorderColor,
+                    ),
+                  ),
+                ),
+                autofocus: true,
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text(
+                    'Dismiss',
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                const SizedBox(
+                  width: 120,
+                ),
+                TextButton(
+                  onPressed: () {
+                    if (controller.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text("Drink name can't be empty"),
+                        ),
+                      );
+                    } else {
+                      context.read<SearchDetailsCubit>().getCocktailModel(
+                          cocktailName: controller.text
+                              .toLowerCase()
+                              .replaceAll(' ', '_'));
+                      Navigator.of(buildContext).pop();
+                    }
+                    controller.clear();
+                  },
+                  child: const Text(
+                    'Search',
+                    style: TextStyle(color: kShadowColor, fontSize: 18),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
