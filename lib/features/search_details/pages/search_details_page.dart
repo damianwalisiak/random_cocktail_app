@@ -246,3 +246,78 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
         });
   }
 }
+//   Future<String?> openDialog() => showDialog<String>(
+//     TextEditingController searchcontroller = TextEditingController(),
+//         context: context,
+//         builder: (context) => AlertDialog(
+//           title: Text(
+//             'Cocktail name',
+//             style: TextStyle(color: Colors.pink),
+//           ),
+//           content: TextField(
+//             controller: _controller,
+//             onChanged: (text) {
+//               setState(() {});
+//             },
+//             style: TextStyle(color: kNormalTextColor.withOpacity(0.9)),
+//             decoration: InputDecoration(
+//               suffixIcon: _controller.text.isNotEmpty
+//                   ? IconButton(
+//                       onPressed: () {
+//                         _controller.clear();
+//                         setState(() {});
+//                       },
+//                       icon: const Icon(Icons.clear))
+//                   : null,
+//               hintText: 'e.g. Vesper',
+//               border: OutlineInputBorder(
+//                 borderRadius: BorderRadius.circular(10),
+//                 borderSide: const BorderSide(
+//                   color: kBorderColor,
+//                 ),
+//               ),
+//             ),
+//             autofocus: true,
+//             onSubmitted: (_) => submit(),
+//           ),
+//           actions: [
+//             TextButton(
+//               child: Text(
+//                 'Dismiss',
+//                 style: TextStyle(color: Colors.grey),
+//               ),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//               },
+//             ),
+//             SizedBox(
+//               width: 120,
+//             ),
+//             TextButton(
+//               child: Text('Search'),
+//               onPressed: submit,
+//             ),
+//           ],
+//         ),
+//       );
+
+//   void submit() {
+//     if (_controller.text.isEmpty) {
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         const SnackBar(
+//           backgroundColor: Colors.red,
+//           content: Text("Drink name can't be empty"),
+//         ),
+//       );
+//     } else {
+//       Navigator.of(context).push(
+//         MaterialPageRoute(
+//           builder: (_) => SearchDetailsPage(
+//             cocktailName: _controller.text.toLowerCase().replaceAll(' ', '_'),
+//           ),
+//         ),
+//       );
+//     }
+//     _controller.clear();
+//   }
+// }
