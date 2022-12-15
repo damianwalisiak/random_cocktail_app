@@ -8,7 +8,7 @@ import 'package:random_cocktail_app/constants.dart';
 import 'package:random_cocktail_app/domain/repositories/search_cocktail_repository.dart';
 import 'package:random_cocktail_app/features/home/pages/home_page.dart';
 import 'package:random_cocktail_app/features/search_details/cubit/search_details_cubit.dart';
-import 'package:random_cocktail_app/widgets/details_widget.dart';
+import 'package:random_cocktail_app/widgets/cocktail_image_widget.dart';
 import 'package:random_cocktail_app/widgets/ingredient_widget.dart';
 import 'package:random_cocktail_app/widgets/instruction_widget.dart';
 
@@ -126,32 +126,9 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                       child: ListView(
                         padding: EdgeInsets.zero,
                         children: [
-                          SizedBox(
-                            height: 550,
-                            child: Stack(
-                              fit: StackFit.passthrough,
-                              children: [
-                                if (cocktailModel.pictureUrl.isNotEmpty)
-                                  //image cocktail
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(40),
-                                      bottomRight: Radius.circular(40),
-                                    ),
-                                    child: Image(
-                                      image: NetworkImage(
-                                          cocktailModel.pictureUrl),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                //Details of cocktail
-                                DetailsCocktail(
-                                  cocktailModel: cocktailModel,
-                                  shadowColor: shadowColor,
-                                ),
-                              ],
-                            ),
-                          ),
+                          CocktailImage(
+                              cocktailModel: cocktailModel,
+                              shadowColor: shadowColor),
                           //Ingredient box
                           IngredientWidget(
                             ingredientsList: cocktailModel.ingredientsList,
@@ -189,6 +166,14 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                   color: kShadowColor,
                   fontSize: 22,
                 ),
+                textAlign: TextAlign.center,
+              ),
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(
+                  color: kShadowColor,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(20),
               ),
               content: TextField(
                 controller: controller,
@@ -198,7 +183,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
-                      color: kBorderColor,
+                      color: kShadowColor,
                     ),
                   ),
                 ),
@@ -246,78 +231,3 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
         });
   }
 }
-//   Future<String?> openDialog() => showDialog<String>(
-//     TextEditingController searchcontroller = TextEditingController(),
-//         context: context,
-//         builder: (context) => AlertDialog(
-//           title: Text(
-//             'Cocktail name',
-//             style: TextStyle(color: Colors.pink),
-//           ),
-//           content: TextField(
-//             controller: _controller,
-//             onChanged: (text) {
-//               setState(() {});
-//             },
-//             style: TextStyle(color: kNormalTextColor.withOpacity(0.9)),
-//             decoration: InputDecoration(
-//               suffixIcon: _controller.text.isNotEmpty
-//                   ? IconButton(
-//                       onPressed: () {
-//                         _controller.clear();
-//                         setState(() {});
-//                       },
-//                       icon: const Icon(Icons.clear))
-//                   : null,
-//               hintText: 'e.g. Vesper',
-//               border: OutlineInputBorder(
-//                 borderRadius: BorderRadius.circular(10),
-//                 borderSide: const BorderSide(
-//                   color: kBorderColor,
-//                 ),
-//               ),
-//             ),
-//             autofocus: true,
-//             onSubmitted: (_) => submit(),
-//           ),
-//           actions: [
-//             TextButton(
-//               child: Text(
-//                 'Dismiss',
-//                 style: TextStyle(color: Colors.grey),
-//               ),
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//             ),
-//             SizedBox(
-//               width: 120,
-//             ),
-//             TextButton(
-//               child: Text('Search'),
-//               onPressed: submit,
-//             ),
-//           ],
-//         ),
-//       );
-
-//   void submit() {
-//     if (_controller.text.isEmpty) {
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         const SnackBar(
-//           backgroundColor: Colors.red,
-//           content: Text("Drink name can't be empty"),
-//         ),
-//       );
-//     } else {
-//       Navigator.of(context).push(
-//         MaterialPageRoute(
-//           builder: (_) => SearchDetailsPage(
-//             cocktailName: _controller.text.toLowerCase().replaceAll(' ', '_'),
-//           ),
-//         ),
-//       );
-//     }
-//     _controller.clear();
-//   }
-// }

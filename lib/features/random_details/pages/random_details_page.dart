@@ -6,9 +6,8 @@ import 'package:random_cocktail_app/app/core/enums.dart';
 import 'package:random_cocktail_app/app/data/remote_data_sources/random_remote_data_source.dart';
 import 'package:random_cocktail_app/constants.dart';
 import 'package:random_cocktail_app/domain/repositories/random_cocktail_repository.dart';
-import 'package:random_cocktail_app/features/home/pages/home_page.dart';
 import 'package:random_cocktail_app/features/random_details/cubit/random_details_cubit.dart';
-import 'package:random_cocktail_app/widgets/details_widget.dart';
+import 'package:random_cocktail_app/widgets/cocktail_image_widget.dart';
 import 'package:random_cocktail_app/widgets/ingredient_widget.dart';
 import 'package:random_cocktail_app/widgets/instruction_widget.dart';
 
@@ -96,21 +95,15 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                         return IconButton(
                             icon: const Icon(Icons.arrow_back_ios_new_outlined),
                             onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => const HomePage(),
-                                ),
-                              );
+                              Navigator.pop(context);
                             });
                       }),
                       actions: [
                         IconButton(
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (_) => const RandomDetailsPage(),
-                              ),
-                            );
+                            context
+                                .read<RandomDetailsCubit>()
+                                .getCocktailModel();
                           },
                           icon: const Icon(
                             Icons.replay_outlined,
@@ -134,33 +127,9 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                       child: ListView(
                         padding: EdgeInsets.zero,
                         children: [
-                          SizedBox(
-                            height: 550,
-                            child: Stack(
-                              fit: StackFit.passthrough,
-                              children: [
-                                //image cocktail
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(40),
-                                      bottomRight: Radius.circular(
-                                        40,
-                                      )),
-                                  child: Image(
-                                    image: NetworkImage(
-                                      cocktailModel.pictureUrl,
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                //Details of cocktail
-                                DetailsCocktail(
-                                  cocktailModel: cocktailModel,
-                                  shadowColor: shadowColor,
-                                ),
-                              ],
-                            ),
-                          ),
+                          CocktailImage(
+                              cocktailModel: cocktailModel,
+                              shadowColor: shadowColor),
                           //Ingredient box
                           IngredientWidget(
                             ingredientsList: cocktailModel.ingredientsList,
