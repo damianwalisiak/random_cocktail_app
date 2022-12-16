@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 
 import 'package:random_cocktail_app/main.dart';
 
@@ -15,7 +14,7 @@ void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(
-      RandomCocktailApp(),
+      const RandomCocktailApp(),
     );
 
     // Verify that our counter starts at 0.

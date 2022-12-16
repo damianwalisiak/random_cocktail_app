@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
-import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 import 'package:random_cocktail_app/domain/repositories/search_cocktail_repository.dart';
 
 part 'search_details_state.dart';

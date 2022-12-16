@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:random_cocktail_app/domain/models/ingredient_model.dart';
 
 class SearchRemoteDataSource {
   Future<Map<String, dynamic>?> getSearchCocktail({

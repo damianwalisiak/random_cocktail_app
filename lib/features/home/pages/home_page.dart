@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_cocktail_app/constants.dart';
 import 'package:random_cocktail_app/features/home/widgets/circular_neon_widget.dart';
 import 'package:random_cocktail_app/features/home/widgets/random_button_widget.dart';
@@ -87,6 +86,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.all(20),
                       child: TextField(
+                        scrollPadding: const EdgeInsets.only(bottom: 100),
                         controller: _controller,
                         onChanged: (text) {
                           setState(() {});
@@ -100,7 +100,8 @@ class _HomePageState extends State<HomePage> {
                                     _controller.clear();
                                     setState(() {});
                                   },
-                                  icon: const Icon(Icons.clear))
+                                  icon: const Icon(Icons.clear),
+                                )
                               : null,
                           hintText: 'e.g. Zombie',
                           border: OutlineInputBorder(
