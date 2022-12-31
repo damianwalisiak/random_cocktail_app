@@ -12,25 +12,13 @@ class RandomRemoteDataSource {
       }
       final Map<String, dynamic> firstDrink = data['drinks'][0];
 
-      firstDrink['ingredientsList'] = [
-        firstDrink['strIngredient1'],
-        firstDrink['strIngredient2'],
-        firstDrink['strIngredient3'],
-        firstDrink['strIngredient4'],
-        firstDrink['strIngredient5'],
-        firstDrink['strIngredient6'],
-        firstDrink['strIngredient7'],
-      ];
-
-      firstDrink['measure'] = [
-        firstDrink['strMeasure1'],
-        firstDrink['strMeasure2'],
-        firstDrink['strMeasure3'],
-        firstDrink['strMeasure4'],
-        firstDrink['strMeasure5'],
-        firstDrink['strMeasure6'],
-        firstDrink['strMeasure7'],
-      ];
+      firstDrink['ingredientsList'] = <String?, String?>{
+        firstDrink['strIngredient1']: firstDrink['strMeasure1'],
+        firstDrink['strIngredient2']: firstDrink['strMeasure2'],
+        firstDrink['strIngredient3']: firstDrink['strMeasure3'],
+        firstDrink['strIngredient4']: firstDrink['strMeasure4'],
+        firstDrink['strIngredient5']: firstDrink['strMeasure5'],
+      };
 
       return firstDrink;
     } on DioError catch (error) {

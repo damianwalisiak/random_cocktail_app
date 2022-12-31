@@ -27,9 +27,6 @@ class CocktailModel {
   @IngredientsConverter()
   final List<IngredientModel> ingredientsList;
 
-  // @JsonKey(fromJson: _getIngredients)
-  // final List<IngredientModel> ingredientsList;
-
   CocktailModel({
     required this.name,
     required this.category,

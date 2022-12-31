@@ -15,7 +15,7 @@ CocktailModel _$CocktailModelFromJson(Map<String, dynamic> json) =>
       pictureUrl: json['strDrinkThumb'] as String,
       instructions: json['strInstructions'] as String,
       ingredientsList: const IngredientsConverter()
-          .fromJson(json['ingredientsList'] as List),
+          .fromJson(json['ingredientsList'] as Map<String?, String?>),
     );
 
 Map<String, dynamic> _$CocktailModelToJson(CocktailModel instance) =>

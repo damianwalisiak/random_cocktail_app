@@ -4,9 +4,9 @@ import 'package:json_annotation/json_annotation.dart';
 class IngredientModel {
   IngredientModel({
     required this.name,
-    // required this.mesure,
+    required this.mesure,
   });
 
   String name;
-  // String mesure;
+  String mesure;
 }
