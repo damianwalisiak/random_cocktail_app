@@ -41,44 +41,4 @@ class CocktailModel {
       _$CocktailModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CocktailModelToJson(this);
-
-  // static List<IngredientModel> _getIngredients(
-  //   Map<String, dynamic> json,
-  // ) {
-  //   List<IngredientModel> ingredientsList = [];
-
-  //   for (var i = 1; i <= 16; i++) {
-  //     if (json['strIngredient$i'] == null) {
-  //       continue;
-  //     }
-  //     if (json['strMeasure$i'] == null) {
-  //       continue;
-  //     }
-  //     ingredientsList.add(
-  //       IngredientModel(
-  //         name: json['strIngredient$i'],
-  //         mesure: json['strMeasure$i'],
-  //       ),
-  //     );
-  //   }
-  //   return ingredientsList;
-  // }
 }
-
-
-
-// 
-// class IngredientsConverter
-//     implements JsonConverter<List<IngredientModel>, List<String>> {
-//   const IngredientsConverter();
-
-//   @override
-//   List<IngredientModel> fromJson(List<String> ingredientsRaw) {
-//     return [];
-//   }
-
-//   @override
-//   List<String> toJson(List<IngredientModel> ingredientModels) {
-//     return [];
-//   }
-// }
