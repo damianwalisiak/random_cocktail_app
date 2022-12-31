@@ -30,22 +30,23 @@ class IngredientWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  ingredientsList[i].mesure,
-                  style: TextStyle(
-                    color: kNormalTextColor.withOpacity(0.8),
-                    fontSize: 18,
-                    fontFamily: 'NotoSans-Regular',
-                    fontWeight: FontWeight.w600,
-                    decoration: TextDecoration.none,
-                  ),
-                  textAlign: TextAlign.right,
-                ),
-              ],
-            ),
+            // Commented during Zoom meeting
+            // Column(
+            //   crossAxisAlignment: CrossAxisAlignment.end,
+            //   children: [
+            //     Text(
+            //       ingredientsList[i].mesure,
+            //       style: TextStyle(
+            //         color: kNormalTextColor.withOpacity(0.8),
+            //         fontSize: 18,
+            //         fontFamily: 'NotoSans-Regular',
+            //         fontWeight: FontWeight.w600,
+            //         decoration: TextDecoration.none,
+            //       ),
+            //       textAlign: TextAlign.right,
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       );
