@@ -1,12 +1,11 @@
 part of 'random_details_cubit.dart';
 
-class RandomDetailsState {
-  const RandomDetailsState({
-    required this.model,
-    this.status = Status.initial,
-    this.errorMessage,
-  });
-  final CocktailModel? model;
-  final Status status;
-  final String? errorMessage;
+@freezed
+class RandomDetailsState with _$RandomDetailsState {
+  const RandomDetailsState._();
+  factory RandomDetailsState({
+    CocktailModel? model,
+    @Default(Status.initial) Status status,
+    @Default('') String? errorMessage,
+  }) = _RandomDetailsState;
 }

@@ -1,12 +1,11 @@
 part of 'search_details_cubit.dart';
 
-class SearchDetailsState {
-  const SearchDetailsState({
-    required this.model,
-    this.status = Status.initial,
-    this.errorMessage,
-  });
-  final CocktailModel? model;
-  final Status status;
-  final String? errorMessage;
+@freezed
+class SearchDetailsState with _$SearchDetailsState {
+  const SearchDetailsState._();
+  factory SearchDetailsState({
+    CocktailModel? model,
+    @Default(Status.initial) Status status,
+    @Default('') String? errorMessage,
+  }) = _SearchDetailsState;
 }
