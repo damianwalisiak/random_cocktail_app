@@ -30,7 +30,6 @@ class IngredientWidget extends StatelessWidget {
                 ),
               ],
             ),
-            // Commented during Zoom meeting
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -82,7 +81,6 @@ class IngredientWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          //Title of box
           const Text(
             'Ingredients',
             style: TextStyle(

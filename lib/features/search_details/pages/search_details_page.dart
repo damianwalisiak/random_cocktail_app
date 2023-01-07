@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
-import 'package:random_cocktail_app/app/data/remote_data_sources/search_remote_data_source.dart';
 import 'package:random_cocktail_app/app/injection_container.dart';
 import 'package:random_cocktail_app/constants.dart';
-import 'package:random_cocktail_app/domain/repositories/search_cocktail_repository.dart';
 import 'package:random_cocktail_app/features/home/pages/home_page.dart';
 import 'package:random_cocktail_app/features/search_details/cubit/search_details_cubit.dart';
 import 'package:random_cocktail_app/widgets/cocktail_image_widget.dart';
@@ -66,7 +64,6 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                   }
 
                   return Scaffold(
-                    //AppBar look
                     extendBodyBehindAppBar: true,
                     backgroundColor: Colors.transparent,
                     appBar: AppBar(
@@ -108,7 +105,6 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                         ),
                       ],
                     ),
-                    //Gradient background
                     body: Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
@@ -127,11 +123,9 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                           CocktailImage(
                               cocktailModel: cocktailModel,
                               shadowColor: shadowColor),
-                          //Ingredient box
                           IngredientWidget(
                             ingredientsList: cocktailModel.ingredientsList,
                           ),
-                          //Instrucction Box
                           InstructionWidget(
                             instructions: cocktailModel.instructions,
                           )

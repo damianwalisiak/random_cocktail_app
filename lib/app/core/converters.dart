@@ -22,27 +22,3 @@ class IngredientsConverter
     return {};
   }
 }
-
-
-
- //static List<IngredientModel> _getIngredients(
-      //   Map<String, dynamic> json,
-      // ) {
-      //   List<IngredientModel> ingredientsList = [];
-
-      //   for (var i = 1; i <= 16; i++) {
-      //     if (json['strIngredient$i'] == null) {
-      //       continue;
-      //     }
-      //     if (json['strMeasure$i'] == null) {
-      //       continue;
-      //     }
-      //     ingredientsList.add(
-      //       IngredientModel(
-      //         name: json['strIngredient$i'],
-      //         mesure: json['strMeasure$i'],
-      //       ),
-      //     );
-      //   }
-      //   return ingredientsList;
-      // }

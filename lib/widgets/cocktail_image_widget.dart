@@ -20,7 +20,6 @@ class CocktailImage extends StatelessWidget {
         fit: StackFit.passthrough,
         children: [
           if (cocktailModel!.pictureUrl.isNotEmpty)
-            //image cocktail
             ClipRRect(
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(40),
@@ -31,7 +30,6 @@ class CocktailImage extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          //Details of cocktail
           DetailsCocktail(
             cocktailModel: cocktailModel,
             shadowColor: shadowColor,

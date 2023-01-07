@@ -47,9 +47,6 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 70,
                     ),
-                    //logo image
-
-                    //TODO rive animation
                     const Image(
                       image: AssetImage('images/drink.png'),
                       width: 200,
@@ -57,12 +54,10 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    //Text to random button
                     const RandomText(),
                     const SizedBox(
                       height: 20,
                     ),
-                    //Random Button
                     Listener(
                       onPointerDown: (_) => setState(() {
                         isPressed = true;
@@ -70,7 +65,6 @@ class _HomePageState extends State<HomePage> {
                       onPointerUp: (_) => setState(() {
                         isPressed = false;
                       }),
-                      //Random Button properites
                       child: RandomButton(
                         isPressed: isPressed,
                         backgroundColor: backgroundColor,
@@ -80,9 +74,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 50,
                     ),
-                    //Text to search button
                     const SearchText(),
-                    //TextField
                     Padding(
                       padding: const EdgeInsets.all(20),
                       child: TextField(
@@ -113,7 +105,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-                    //Search button
                     Listener(
                       onPointerDown: (_) => setState(() {
                         isPressedSearch = true;
@@ -130,7 +121,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                //Circular neon text
                 const CircularNeonText()
               ],
             )

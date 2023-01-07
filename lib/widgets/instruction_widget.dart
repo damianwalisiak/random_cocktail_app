@@ -34,7 +34,6 @@ class InstructionWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          //Title of box
           const Text(
             'Instructions',
             style: TextStyle(
@@ -63,7 +62,6 @@ class InstructionWidget extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          //Instructions text
           Text(
             instructions,
             style: TextStyle(

@@ -69,7 +69,6 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                   }
 
                   return Scaffold(
-                    //AppBar look
                     extendBodyBehindAppBar: true,
                     backgroundColor: Colors.transparent,
                     appBar: AppBar(
@@ -106,7 +105,6 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                         ),
                       ],
                     ),
-                    //Gradient background
                     body: Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
@@ -125,11 +123,9 @@ class _RandomDetailsPageState extends State<RandomDetailsPage> {
                           CocktailImage(
                               cocktailModel: cocktailModel,
                               shadowColor: shadowColor),
-                          //Ingredient box
                           IngredientWidget(
                             ingredientsList: cocktailModel.ingredientsList,
                           ),
-                          //Instruction Box
                           InstructionWidget(
                             instructions: cocktailModel.instructions,
                           )
