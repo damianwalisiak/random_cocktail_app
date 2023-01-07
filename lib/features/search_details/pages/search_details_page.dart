@@ -177,7 +177,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                 controller: controller,
                 style: TextStyle(color: kNormalTextColor.withOpacity(0.9)),
                 decoration: InputDecoration(
-                  hintText: 'e.g. Vesper',
+                  hintText: 'e.g. Adam',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(

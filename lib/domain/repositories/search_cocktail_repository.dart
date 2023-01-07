@@ -14,11 +14,7 @@ class SearchCocktailRepository {
     );
     if (json == null) {
       throw Exception('Cocktail does not exist. Please enter a valid name');
-    } else if (json['drinks'] == null) {
-      throw Exception('Cocktail does not exist. Please enter a valid name');
-    } else if (json['drinks'][0] == null) {
-      throw Exception('Cocktail does not exist. Please enter a valid name');
     }
-    return CocktailModel.fromJson(json['drinks'][0]);
+    return CocktailModel.fromJson(json);
   }
 }

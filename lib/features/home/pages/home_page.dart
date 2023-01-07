@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                                   icon: const Icon(Icons.clear),
                                 )
                               : null,
-                          hintText: 'e.g. Zombie',
+                          hintText: 'e.g. Vesper',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(

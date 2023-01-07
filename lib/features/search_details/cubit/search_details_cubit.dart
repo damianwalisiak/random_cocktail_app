@@ -31,10 +31,10 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
       );
     } catch (error) {
       emit(
-        SearchDetailsState(
+        const SearchDetailsState(
           model: null,
           status: Status.error,
-          errorMessage: error.toString(),
+          errorMessage: 'Cocktail does not exist. Please enter a valid name',
         ),
       );
     }
