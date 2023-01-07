@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:random_cocktail_app/app/injection_container.dart';
 import 'package:random_cocktail_app/features/home/pages/home_page.dart';
 
 void main() {
+  configureDependencies();
   runApp(
     const RandomCocktailApp(),
   );

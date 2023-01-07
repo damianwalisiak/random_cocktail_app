@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:random_cocktail_app/app/core/enums.dart';
 import 'package:random_cocktail_app/app/data/remote_data_sources/search_remote_data_source.dart';
+import 'package:random_cocktail_app/app/injection_container.dart';
 import 'package:random_cocktail_app/constants.dart';
 import 'package:random_cocktail_app/domain/repositories/search_cocktail_repository.dart';
 import 'package:random_cocktail_app/features/home/pages/home_page.dart';
@@ -30,9 +31,8 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
     Color shadowColor = kShadowColor;
     return Scaffold(
       body: BlocProvider(
-        create: (context) => SearchDetailsCubit(
-          SearchCocktailRepository(SearchRemoteDataSource()),
-        )..getCocktailModel(cocktailName: widget.cocktailName),
+        create: (context) => getIt<SearchDetailsCubit>()
+          ..getCocktailModel(cocktailName: widget.cocktailName),
         child: BlocListener<SearchDetailsCubit, SearchDetailsState>(
           listener: (context, state) {
             if (state.status == Status.error) {
@@ -154,9 +154,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
         context: context,
         builder: (buildContext) {
           return BlocProvider(
-            create: (context) => SearchDetailsCubit(
-              SearchCocktailRepository(SearchRemoteDataSource()),
-            ),
+            create: (context) => getIt<SearchDetailsCubit>(),
             child: AlertDialog(
               title: const Text(
                 'Cocktail name',

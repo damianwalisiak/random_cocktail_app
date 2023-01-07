@@ -8,10 +8,10 @@ part 'search_details_cubit.freezed.dart';
 part 'search_details_state.dart';
 
 class SearchDetailsCubit extends Cubit<SearchDetailsState> {
-  SearchDetailsCubit(this._searchRepository)
+  SearchDetailsCubit({required this.searchRepository})
       : super(SearchDetailsState(model: null));
 
-  final SearchCocktailRepository _searchRepository;
+  final SearchCocktailRepository searchRepository;
 
   Future<void> getCocktailModel({
     required String cocktailName,
@@ -22,7 +22,7 @@ class SearchDetailsCubit extends Cubit<SearchDetailsState> {
     ));
     try {
       final CocktailModel cocktailModel =
-          await _searchRepository.getCocktailModel(
+          await searchRepository.getCocktailModel(
         cocktailName: cocktailName,
       );
       emit(

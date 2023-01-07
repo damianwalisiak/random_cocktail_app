@@ -8,10 +8,10 @@ part 'random_details_cubit.freezed.dart';
 part 'random_details_state.dart';
 
 class RandomDetailsCubit extends Cubit<RandomDetailsState> {
-  RandomDetailsCubit(this._randomRepository)
+  RandomDetailsCubit({required this.randomRepository})
       : super(RandomDetailsState(model: null));
 
-  final RandomCocktailRepository _randomRepository;
+  final RandomCocktailRepository randomRepository;
 
   Future<void> getCocktailModel() async {
     emit(RandomDetailsState(
@@ -21,7 +21,7 @@ class RandomDetailsCubit extends Cubit<RandomDetailsState> {
 
     try {
       final CocktailModel cocktailModel =
-          await _randomRepository.getRandomCocktailModel();
+          await randomRepository.getRandomCocktailModel();
 
       emit(
         RandomDetailsState(

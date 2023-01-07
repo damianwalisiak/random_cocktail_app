@@ -2,12 +2,12 @@ import 'package:random_cocktail_app/app/data/remote_data_sources/random_remote_d
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 
 class RandomCocktailRepository {
-  RandomCocktailRepository(this._randomRemoteDataSource);
+  RandomCocktailRepository({required this.randomRemoteDataSource});
 
-  final RandomRemoteDataSource _randomRemoteDataSource;
+  final RandomRemoteDataSource randomRemoteDataSource;
 
   Future<CocktailModel> getRandomCocktailModel() async {
-    final json = await _randomRemoteDataSource.fetchDataForRandomCocktail();
+    final json = await randomRemoteDataSource.fetchDataForRandomCocktail();
     if (json == null) {
       throw Exception('Failed to get data');
     }
