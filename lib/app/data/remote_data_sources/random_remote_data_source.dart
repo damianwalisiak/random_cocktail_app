@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
 class RandomRemoteDataSource {
   Future<Map<String, dynamic>?> fetchDataForRandomCocktail() async {
     try {

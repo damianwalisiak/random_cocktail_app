@@ -190,7 +190,7 @@ class _SearchDetailsPageState extends State<SearchDetailsPage> {
                   },
                 ),
                 const SizedBox(
-                  width: 120,
+                  width: 100,
                 ),
                 TextButton(
                   onPressed: () {

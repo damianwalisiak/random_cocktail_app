@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
 class SearchRemoteDataSource {
   Future<Map<String, dynamic>?> getSearchCocktail({
     required String cocktailName,

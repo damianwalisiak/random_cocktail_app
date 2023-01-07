@@ -8,7 +8,6 @@ import 'package:random_cocktail_app/domain/repositories/search_cocktail_reposito
 part 'search_details_cubit.freezed.dart';
 part 'search_details_state.dart';
 
-@injectable
 class SearchDetailsCubit extends Cubit<SearchDetailsState> {
   SearchDetailsCubit({required this.searchRepository})
       : super(SearchDetailsState(model: null));

@@ -2,7 +2,6 @@ import 'package:injectable/injectable.dart';
 import 'package:random_cocktail_app/app/data/remote_data_sources/random_remote_data_source.dart';
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 
-@injectable
 class RandomCocktailRepository {
   RandomCocktailRepository({required this.randomRemoteDataSource});
 

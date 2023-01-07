@@ -8,7 +8,6 @@ import 'package:random_cocktail_app/domain/repositories/random_cocktail_reposito
 part 'random_details_cubit.freezed.dart';
 part 'random_details_state.dart';
 
-@injectable
 class RandomDetailsCubit extends Cubit<RandomDetailsState> {
   RandomDetailsCubit({required this.randomRepository})
       : super(RandomDetailsState(model: null));
