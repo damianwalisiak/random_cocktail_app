@@ -1,16 +1,19 @@
 # random_cocktail_app
 
-A new Flutter project.
 
-## Getting Started
+https://user-images.githubusercontent.com/98479759/211141088-ef69cc96-e2e1-4cb9-9ae1-ab9777d13ceb.mp4
 
-This project is a starting point for a Flutter application.
+This is my app, involving randomly selecting cocktails for you. Unless if you don't want to play around and prefer to type in the name of your favorite cocktail, that's an option too 😁 
 
-A few resources to get you started if this is your first Flutter project:
+It is based on free API. TThe tools I used to write this application are:
+- cubit, 
+- dio, 
+- json_serializable,
+- freezed, 
+- get_it 
+- injecteble.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+I hope you love it and cheers 🍻 ❤️
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
