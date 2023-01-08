@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/app/core/constants.dart';
 import 'package:random_cocktail_app/domain/models/cocktail_model.dart';
 
 class DetailsCocktail extends StatelessWidget {

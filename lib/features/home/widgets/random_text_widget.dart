@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/app/core/constants.dart';
 
 class RandomText extends StatelessWidget {
   const RandomText({

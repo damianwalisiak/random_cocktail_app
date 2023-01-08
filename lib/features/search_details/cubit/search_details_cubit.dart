@@ -10,32 +10,32 @@ part 'search_details_state.dart';
 
 class SearchDetailsCubit extends Cubit<SearchDetailsState> {
   SearchDetailsCubit({required this.searchRepository})
-      : super(SearchDetailsState(model: null));
+      : super(SearchDetailsState());
 
   final SearchCocktailRepository searchRepository;
 
   Future<void> getCocktailModel({
     required String cocktailName,
   }) async {
-    emit(SearchDetailsState(
-      model: null,
-      status: Status.loading,
-    ));
+    emit(
+      state.copyWith(
+        status: Status.loading,
+      ),
+    );
     try {
       final CocktailModel cocktailModel =
           await searchRepository.getCocktailModel(
         cocktailName: cocktailName,
       );
       emit(
-        SearchDetailsState(
+        state.copyWith(
           model: cocktailModel,
           status: Status.success,
         ),
       );
     } catch (error) {
       emit(
-        SearchDetailsState(
-          model: null,
+        state.copyWith(
           status: Status.error,
           errorMessage: 'Cocktail does not exist. Please enter a valid name',
         ),

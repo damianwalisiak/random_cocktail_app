@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/app/core/constants.dart';
 import 'package:random_cocktail_app/features/search_details/pages/search_details_page.dart';
 
 class SearchButton extends StatelessWidget {

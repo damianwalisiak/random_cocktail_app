@@ -132,10 +132,11 @@ class __$$_RandomDetailsStateCopyWithImpl<$Res>
 
 class _$_RandomDetailsState extends _RandomDetailsState {
   _$_RandomDetailsState(
-      {this.model, this.status = Status.initial, this.errorMessage = ''})
+      {this.model = null, this.status = Status.initial, this.errorMessage = ''})
       : super._();
 
   @override
+  @JsonKey()
   final CocktailModel? model;
   @override
   @JsonKey()

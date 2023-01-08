@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/app/core/constants.dart';
 import 'package:random_cocktail_app/features/home/widgets/circular_neon_widget.dart';
 import 'package:random_cocktail_app/features/home/widgets/random_button_widget.dart';
 import 'package:random_cocktail_app/features/home/widgets/random_text_widget.dart';

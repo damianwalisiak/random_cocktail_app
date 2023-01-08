@@ -132,10 +132,11 @@ class __$$_SearchDetailsStateCopyWithImpl<$Res>
 
 class _$_SearchDetailsState extends _SearchDetailsState {
   _$_SearchDetailsState(
-      {this.model, this.status = Status.initial, this.errorMessage = ''})
+      {this.model = null, this.status = Status.initial, this.errorMessage = ''})
       : super._();
 
   @override
+  @JsonKey()
   final CocktailModel? model;
   @override
   @JsonKey()

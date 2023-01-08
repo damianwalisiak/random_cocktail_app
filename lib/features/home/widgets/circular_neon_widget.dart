@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_text/circular_text/model.dart';
 import 'package:flutter_circular_text/circular_text/widget.dart';
-import 'package:random_cocktail_app/constants.dart';
+import 'package:random_cocktail_app/app/core/constants.dart';
 
 class CircularNeonText extends StatelessWidget {
   const CircularNeonText({
