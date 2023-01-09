@@ -13,6 +13,8 @@ It is based on free API. The tools I used to write this application are:
 - get_it 
 - injecteble.
 
+Additionally, I wrote unit tests.
+
 I hope you love it and cheers 🍻 ❤️
 
 
